@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements
                 parentHeight = parentLayout.getMeasuredHeight();
                 iconWidth = ivFloatingIcon.getMeasuredWidth();
                 iconHeight = ivFloatingIcon.getMeasuredHeight();
+                startPosition();
             }
         });
     }
@@ -86,6 +87,15 @@ public class MainActivity extends AppCompatActivity implements
         }
         // parentLayout.invalidate();
         return true;
+    }
+
+    public void startPosition() {
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) ivFloatingIcon.getLayoutParams();
+        layoutParams.leftMargin = parentWidth - iconWidth;
+        layoutParams.topMargin = parentHeight - parentHeight / 5;
+        layoutParams.rightMargin = 0;
+        layoutParams.bottomMargin = 0;
+        parentLayout.updateViewLayout(ivFloatingIcon, layoutParams);
     }
 
     public void resetPosition() {
